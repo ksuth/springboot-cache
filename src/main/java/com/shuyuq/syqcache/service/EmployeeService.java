@@ -8,7 +8,7 @@ import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-@CacheConfig(cacheNames = "emp" ,keyGenerator = "mykeyGenerator")
+@CacheConfig(cacheNames = "emp" ,cacheManager = "employeeCacheManager")
 @Service
 public class EmployeeService {
     @Autowired
@@ -20,7 +20,7 @@ public class EmployeeService {
         Employee employee = employeeMapper.getEmployeeById(id);
         return employee;
     }
-    @CachePut(cacheNames = "emp" ,keyGenerator = "mykeyGenerator")
+    @CachePut(cacheNames = "emp" )
     public Employee updateEmployee(Employee employee){
         System.out.println("更新employee信息:"+employee);
         employeeMapper.updateEmployee(employee);

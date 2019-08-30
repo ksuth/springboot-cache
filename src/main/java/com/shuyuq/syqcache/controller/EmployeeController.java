@@ -19,8 +19,9 @@ public class EmployeeController {
 
     @GetMapping("/emp")
     public Employee updateEmployee(Employee employee){
-
+        System.out.println(employee);
         employeeService.updateEmployee(employee);
+
         return employee;
     }
 }
